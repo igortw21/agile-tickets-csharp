@@ -34,11 +34,5 @@ namespace AgileTickets.Web.Controllers
 
             return RedirectToAction("Index");
         }
-
-        private ActionResult VoltaPraIndex()
-        {
-            return RedirectToAction("Index");
-        }
-
     }
 }

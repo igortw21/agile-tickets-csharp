@@ -34,11 +34,5 @@ namespace AgileTickets.Web.Controllers
             // redireciona
             return RedirectToAction("Index");
         }
-
-        private Estabelecimento PopulaEstabelecimento() 
-        {
-            Estabelecimento e = new Estabelecimento();
-            return e;
-        }
     }
 }
