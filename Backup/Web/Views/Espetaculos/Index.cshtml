@@ -1,0 +1,37 @@
+﻿@model IList<AgileTickets.Web.Models.Espetaculo>
+@{
+    ViewBag.Title = "Espetáculos";
+}
+
+<h2>Espetáculos</h2>
+
+<form action="@Url.Action("Novo", "Espetaculos")" method="post">
+Nome: <input type="text" name="espetaculo.nome" />
+Descrição: <input type="text" name="espetaculo.descricao" />
+Estabelecimento: 
+<select name="espetaculo.estabelecimento.id">
+    @foreach(var item in ViewBag.Estabelecimentos) {
+        <option value="@item.Id">@item.Nome</option>
+    }
+</select>
+<input type="submit" value="Adicionar" />
+</form>
+
+<table width="100%">
+
+    <tr>
+        <td width="30%">Nome</td>
+        <td width="30%">Descrição</td>
+        <td width="25%">Estabelecimento</td>
+        <td width="15%"></td>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Descricao</td>
+            <td>@item.Estabelecimento.Nome</td>
+            <td><a href="@Url.Action("Criar", "Sessoes", new { id = @item.Id})">Criar Sessões</a></td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Criar Sessões";
+}
+
+<h2>Criar Novas Sessões</h2>
+
+<form action="@Url.Action("Salvar", "Sessoes", new { id = @ViewBag.Id })" method="post">
+Início: <input type="text" name="inicio" />
+Fim: <input type="text" name="fim" />
+Periodicidade:
+<select name="periodicidade">
+    <option value="DIARIA">Diária</option>
+    <option value="SEMANAL">Semanal</option>
+</select>
+
+<input type="submit" value="Adicionar" />
+</form>
