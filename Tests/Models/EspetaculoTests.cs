@@ -19,7 +19,7 @@ namespace Tests.Models
             ivete.Sessoes.Add(SessaoComIngressosSobrando(3));
             ivete.Sessoes.Add(SessaoComIngressosSobrando(2));
 
-            Assert.IsTrue(ivete.Vagas(5));
+            Assert.IsTrue(ivete.PossuiVagas(5));
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace Tests.Models
             ivete.Sessoes.Add(SessaoComIngressosSobrando(3));
             ivete.Sessoes.Add(SessaoComIngressosSobrando(2));
 
-            Assert.IsTrue(ivete.Vagas(6));
+            Assert.IsTrue(ivete.PossuiVagas(6));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Tests.Models
             ivete.Sessoes.Add(SessaoComIngressosSobrando(3));
             ivete.Sessoes.Add(SessaoComIngressosSobrando(2));
 
-            Assert.IsFalse(ivete.Vagas(15));
+            Assert.IsFalse(ivete.PossuiVagas(15));
         }
 
         [Test]
@@ -55,7 +55,7 @@ namespace Tests.Models
             ivete.Sessoes.Add(SessaoComIngressosSobrando(3));
             ivete.Sessoes.Add(SessaoComIngressosSobrando(4));
 
-            Assert.IsTrue(ivete.Vagas(5, 3));
+            Assert.IsTrue(ivete.PossuiVagas(5, 3));
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace Tests.Models
             ivete.Sessoes.Add(SessaoComIngressosSobrando(3));
             ivete.Sessoes.Add(SessaoComIngressosSobrando(4));
 
-            Assert.IsTrue(ivete.Vagas(10, 3));
+            Assert.IsTrue(ivete.PossuiVagas(10, 3));
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace Tests.Models
             ivete.Sessoes.Add(SessaoComIngressosSobrando(2));
             ivete.Sessoes.Add(SessaoComIngressosSobrando(2));
 
-            Assert.IsFalse(ivete.Vagas(5, 3));
+            Assert.IsFalse(ivete.PossuiVagas(5, 3));
         }
 
         private Sessao SessaoComIngressosSobrando(int quantidade)

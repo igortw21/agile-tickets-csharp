@@ -40,33 +40,37 @@ namespace AgileTickets.Web.Models
             return null;
         }
 
-        public virtual bool Vagas(int qtd, int min)
+        public virtual bool PossuiVagas(int qtdVagas, int minVagas)
         {
-            // ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
             int totDisp = 0;
+            bool possuiMinimoIngressos= true;
 
             foreach (Sessao s in Sessoes)
             {
-                if (s.IngressosDisponiveis < min) return false;
+                if (s.IngressosDisponiveis < minVagas)
+                {
+                    possuiMinimoIngressos = false;
+                }
                 totDisp += s.IngressosDisponiveis;
             }
 
-            if (totDisp >= qtd) return true;
-            else return false;
+            return totDisp >= qtdVagas && possuiMinimoIngressos;
         }
 
-        public virtual bool Vagas(int qtd)
+        public virtual bool PossuiVagas(int qtdVagas)
         {
-            // ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
+            return TotalIngressosDisponiveis() >= qtdVagas;
+        }
+
+        private int TotalIngressosDisponiveis()
+        {
             int totDisp = 0;
 
             foreach (Sessao s in Sessoes)
             {
                 totDisp += s.IngressosDisponiveis;
             }
-
-            if (totDisp >= qtd) return true;
-            else return false;
+            return totDisp;
         }
     }
 }
