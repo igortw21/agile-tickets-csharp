@@ -46,5 +46,59 @@ namespace Tests.Models
 
             Assert.IsTrue(sessao.PodeReservar(2));
         }
+
+        [Test]
+        public void DeveVender10IngressosSeHa10Vagas()
+        {
+            Sessao sessao = new Sessao();
+            sessao.TotalDeIngressos = 10;
+
+            Assert.IsTrue(sessao.PodeReservar(10));
+        }
+
+        [Test]
+        public void DeveVender200IngressosSeHa200Vagas()
+        {
+            Sessao sessao = new Sessao();
+            sessao.TotalDeIngressos = 200;
+
+            Assert.IsTrue(sessao.PodeReservar(200));
+        }
+
+        [Test]
+        public void DeveVender10IngressosSeHa100Vagas()
+        {
+            Sessao sessao = new Sessao();
+            sessao.TotalDeIngressos = 100;
+
+            Assert.IsTrue(sessao.PodeReservar(10));
+        }
+
+        [Test]
+        public void DeveVender1IngressoSeHa10Vagas()
+        {
+            Sessao sessao = new Sessao();
+            sessao.TotalDeIngressos = 10;
+
+            Assert.IsTrue(sessao.PodeReservar(1));
+        }
+
+        [Test]
+        public void NaoDeveVender10IngressosSeHa2Vagas()
+        {
+            Sessao sessao = new Sessao();
+            sessao.TotalDeIngressos = 2;
+
+            Assert.IsFalse(sessao.PodeReservar(10));
+        }
+
+        [Test]
+        public void NaoDeveVender500IngressosSeHa200Vagas()
+        {
+            Sessao sessao = new Sessao();
+            sessao.TotalDeIngressos = 200;
+
+            Assert.IsFalse(sessao.PodeReservar(500));
+        }
     }
 }
