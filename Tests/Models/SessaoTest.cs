@@ -37,5 +37,14 @@ namespace Tests.Models
             sessao.Reserva(3);
             Assert.AreEqual(2, sessao.IngressosDisponiveis);
         }
+
+        [Test]
+        public void DeveVender2IngressosSeHa2Vagas() 
+        {
+            Sessao sessao = new Sessao();
+            sessao.TotalDeIngressos = 2;
+
+            Assert.IsTrue(sessao.PodeReservar(2));
+        }
     }
 }
