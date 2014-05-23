@@ -82,6 +82,45 @@ namespace Tests.Models
             Assert.IsFalse(ivete.PossuiVagas(5, 3));
         }
 
+        [Test]
+        public void NaoDeveCriarSessoesQuandoDataInicioIgualADataFimEhAPeriodicidadeEhSemanal()
+        {
+            Espetaculo ironMaiden = new Espetaculo();
+
+            var dateInicioFim = new DateTime();
+
+            IList<Sessao> sessoes = ironMaiden.CriaSessoes(dateInicioFim, dateInicioFim, Periodicidade.SEMANAL);
+
+            Assert.AreEqual(0, sessoes.Count());
+        }
+
+        [Test]
+        public void DeveCriarApenas1SessaoQuandoDataInicioIgualADataFimEhAPeriodicidadeEhSemanal()
+        {
+            Espetaculo ironMaiden = new Espetaculo();
+
+            var dateInicioFim = new DateTime();
+
+            IList<Sessao> sessoes = ironMaiden.CriaSessoes(dateInicioFim, dateInicioFim, Periodicidade.SEMANAL);
+
+            Assert.AreEqual(0, sessoes.Count());
+        }
+
+        [Test]
+        public void DeveCriarApenas1SessaoQuandoDataInicioIgualADataFimEhAPeriodicidadeEhDiaria()
+        {
+            Espetaculo ironMaiden = new Espetaculo();
+
+            var dateInicioFim = new DateTime();
+
+            IList<Sessao> sessoes = ironMaiden.CriaSessoes(dateInicioFim, dateInicioFim, Periodicidade.DIARIA);
+
+            Assert.AreEqual(1, sessoes.Count());
+        }
+
+        //[Test]
+        //public void DeveCriar2Sess
+
         private Sessao SessaoComIngressosSobrando(int quantidade)
         {
             Sessao sessao = new Sessao();
