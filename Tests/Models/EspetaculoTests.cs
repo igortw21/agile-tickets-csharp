@@ -82,20 +82,10 @@ namespace Tests.Models
             Assert.IsFalse(ivete.PossuiVagas(5, 3));
         }
 
+        #region CriarSessoes
+
         [Test]
         public void NaoDeveCriarSessoesQuandoDataInicioIgualADataFimEhAPeriodicidadeEhSemanal()
-        {
-            Espetaculo ironMaiden = new Espetaculo();
-
-            var dateInicioFim = new DateTime();
-
-            IList<Sessao> sessoes = ironMaiden.CriaSessoes(dateInicioFim, dateInicioFim, Periodicidade.SEMANAL);
-
-            Assert.AreEqual(0, sessoes.Count());
-        }
-
-        [Test]
-        public void DeveCriarApenas1SessaoQuandoDataInicioIgualADataFimEhAPeriodicidadeEhSemanal()
         {
             Espetaculo ironMaiden = new Espetaculo();
 
@@ -118,8 +108,46 @@ namespace Tests.Models
             Assert.AreEqual(1, sessoes.Count());
         }
 
-        //[Test]
-        //public void DeveCriar2Sess
+        [Test]
+        public void DeveCriar2SessoesQuandoDataFimEh2DiasDepoisDeDataInicioEhAPeriodicidadeEhDiaria()
+        {
+            Espetaculo ironMaiden = new Espetaculo();
+
+            DateTime dateInicio = new DateTime();
+            DateTime dataFim = dateInicio.AddDays(2);
+
+            IList<Sessao> sessoes = ironMaiden.CriaSessoes(dateInicio, dataFim, Periodicidade.DIARIA);
+
+            Assert.AreEqual(2, sessoes.Count());
+        }
+
+        [Test]
+        public void DeveCriar2SessoesQuandoDataFimEh8DiasDepoisDeDataInicioEhAPeriodicidadeEhSemanal()
+        {
+            Espetaculo ironMaiden = new Espetaculo();
+
+            DateTime dateInicio = new DateTime();
+            DateTime dataFim = dateInicio.AddDays(8);
+
+            IList<Sessao> sessoes = ironMaiden.CriaSessoes(dateInicio, dataFim, Periodicidade.SEMANAL);
+
+            Assert.AreEqual(1, sessoes.Count());
+        }
+
+        [Test]
+        public void NaoDeveCriarSessoesQuandoDataFimEh6DiasDepoisDeDataInicioEhAPeriodicidadeEhSemanal()
+        {
+            Espetaculo ironMaiden = new Espetaculo();
+
+            DateTime dateInicio = new DateTime();
+            DateTime dataFim = dateInicio.AddDays(6);
+
+            IList<Sessao> sessoes = ironMaiden.CriaSessoes(dateInicio, dataFim, Periodicidade.SEMANAL);
+
+            Assert.AreEqual(0, sessoes.Count());
+        }
+
+        #endregion
 
         private Sessao SessaoComIngressosSobrando(int quantidade)
         {
