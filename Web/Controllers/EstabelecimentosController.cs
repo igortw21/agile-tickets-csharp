@@ -27,8 +27,6 @@ namespace AgileTickets.Web.Controllers
         [RequiresTransaction]
         public ActionResult Novo(Estabelecimento estabelecimento)
         {
-            var copia = estabelecimento;
-
             estabelecimentos.Salva(estabelecimento);
 
             // redireciona
